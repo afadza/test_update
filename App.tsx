@@ -6,7 +6,7 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Text>Result: 99999999</Text>
+      <Text>Result: 7777</Text>
       <Button title={'check update Git'} onPress={version.onCheckGitVersion} />
 
       {version.state.loading && <Text>Loading from git...</Text>}
