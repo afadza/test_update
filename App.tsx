@@ -6,13 +6,8 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Text>UDH KE UPDATE KEBERAPA INI</Text>
+      <Text>INI UDAH UPDATE</Text>
       <Button title={'check update Git'} onPress={version.onCheckGitVersion} />
-
-      <Image
-        source={require('./src/assets/spiderman.png')}
-        style={styles.img}
-      />
       {version.state.loading && <Text>Loading from git...</Text>}
       {!!version.state.progress && (
         <View style={styles.progress}>
