@@ -6,6 +6,7 @@ export default function App() {
 
   return (
     <View style={styles.container}>
+      <img src="./src/img/sinchan.png" style={styles.img} />
       <Text>AH MASA KE UPDATE</Text>
       <Button title={'check update Git'} onPress={version.onCheckGitVersion} />
       {version.state.loading && <Text>Loading from git...</Text>}
