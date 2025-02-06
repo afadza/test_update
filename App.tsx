@@ -6,7 +6,7 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Text>UDH KE UPDATE</Text>
+      <Text>UDH KE UPDATE KEBERAPA INI</Text>
       <Button title={'check update Git'} onPress={version.onCheckGitVersion} />
 
       <Image
