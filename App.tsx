@@ -13,7 +13,6 @@ export default function App() {
         source={require('./src/assets/spiderman.png')}
         style={styles.img}
       />
-      <Image source={require('./src/assets/batman.png')} style={styles.img} />
       {version.state.loading && <Text>Loading from git...</Text>}
       {!!version.state.progress && (
         <View style={styles.progress}>
