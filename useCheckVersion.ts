@@ -15,12 +15,12 @@ export const useCheckVersion = () => {
     setProgress(0);
     setLoading(true);
     hotUpdate.git.checkForGitUpdate({
-      branch: Platform.OS === 'ios' ? 'iOS' : 'android',
+      branch: 'main',
       bundlePath:
         Platform.OS === 'ios'
-          ? 'output/main.jsbundle'
-          : 'output/index.android.bundle',
-      url: 'https://github.com/afadza/ota_update.git',
+          ? 'ios/output/main.jsbundle'
+          : 'android/output/index.android.bundle',
+      url: 'https://github.com/afadza/test_update.git',
       onCloneFailed(msg: string) {
         Alert.alert('Clone project failed!', msg, [
           {
