@@ -5,6 +5,7 @@ import ReactAppDependencyProvider
 
 @main
 class AppDelegate: RCTAppDelegate {
+  var taskIdentifier: UIBackgroundTaskIdentifier = .invalid
   override func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
     self.moduleName = "test_update"
     self.dependencyProvider = RCTAppDependencyProvider()
@@ -16,6 +17,21 @@ class AppDelegate: RCTAppDelegate {
     return super.application(application, didFinishLaunchingWithOptions: launchOptions)
   }
 
+  override func applicationWillResignActive(_ application: UIApplication) {
+    if taskIdentifier != .invalid {
+        application.endBackgroundTask(taskIdentifier)
+        taskIdentifier = .invalid
+    }
+
+    taskIdentifier = application.beginBackgroundTask(withName: nil) { [weak self] in
+        if let strongSelf = self {
+            application.endBackgroundTask(strongSelf.taskIdentifier)
+            strongSelf.taskIdentifier = .invalid
+        }
+    }
+}
+
+
   override func sourceURL(for bridge: RCTBridge) -> URL? {
     self.bundleURL()
   }
@@ -24,7 +40,7 @@ class AppDelegate: RCTAppDelegate {
 #if DEBUG
     RCTBundleURLProvider.sharedSettings().jsBundleURL(forBundleRoot: "index")
 #else
-    Bundle.main.url(forResource: "main", withExtension: "jsbundle")
+    return OtaHotUpdate.getBundle() 
 #endif
   }
 }
