@@ -9,6 +9,7 @@ export default function App() {
       <Image source={require('./src/assets/sinchan.png')} style={styles.img} />
       <Text>AH MASA KE UPDATE</Text>
       <Button title={'check update Git'} onPress={version.onCheckGitVersion} />
+      <Button title={'Cancel Update Git'} onPress={version.removeGitUpdate} />
       {version.state.loading && <Text>Loading from git...</Text>}
       {!!version.state.progress && (
         <View style={styles.progress}>
